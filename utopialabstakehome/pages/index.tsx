@@ -4,46 +4,17 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import styled from "styled-components";
 import ConnectWallet from "../components/connectWallet";
-import { useEtherBalance, useEthers } from "@usedapp/core";
+import { useEthers } from "@usedapp/core";
 import SendTransaction from "../components/SendTransaction";
 
-const Container = styled.div`
-  top: 50%;
-  left: 50%;
-`;
 const Home: NextPage = () => {
-  const { account } = useEthers();
-  console.log(account);
+  const account = null;
+  //implement logic to find if account is logged in or not
   return account == null ? (
-    <Container>
-      {" "}
-      <Title>Eth Sender</Title>
-      <ConnectWallet></ConnectWallet>{" "}
-    </Container>
+    <ConnectWallet></ConnectWallet>
   ) : (
-    <Container>
-      <SendTransaction></SendTransaction>
-    </Container>
+    <SendTransaction></SendTransaction>
   );
 };
 
 export default Home;
-
-const Title = styled.h1`
-  position: absolute;
-  width: 221px;
-  height: 33px;
-  left: 609px;
-  top: 276px;
-
-  font-family: Nunito;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 33px;
-  /* identical to box height */
-
-  text-align: center;
-
-  color: #01754b;
-`;
